@@ -1,10 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import App from './views/App'
 import './index.css'
+import { RecoilRoot } from 'recoil'
+
+import { CustomLayout } from './components/CustomLayout'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <RecoilRoot>
+      <CustomLayout>
+        <App />
+      </CustomLayout>
+    </RecoilRoot>
   </React.StrictMode>,
 )
