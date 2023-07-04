@@ -1,16 +1,15 @@
 import { useState } from 'react'
 
 import { CustomLayout } from '../components/CustomLayout'
+import { UserManagement } from './user_management'
 
 function App() {
 
   return (
     <>
-      {/* <CustomLayout> */}
-        <div className="container">
-          <h1>Test</h1>
-        </div>
-      {/* </CustomLayout> */}
+      <div className="container">
+        <UserManagement />
+      </div>
     </>
   )
 }

@@ -2,16 +2,17 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './views/App'
 import './index.css'
-import { RecoilRoot } from 'recoil'
+import store from './stores/store'
+import { Provider } from 'react-redux'
 
 import { CustomLayout } from './components/CustomLayout'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RecoilRoot>
+    <Provider store={store}>
       <CustomLayout>
         <App />
       </CustomLayout>
-    </RecoilRoot>
+    </Provider>
   </React.StrictMode>,
 )
