@@ -16,7 +16,7 @@ import {
     DELETE_USER_FAILURE,
 } from '../actionTypes'
 
-import userService from './userService';
+import userService from '../../services/usersService';
 
 export const createUser = ({ firstName, lastName, gender, birthDate, image }) => {
     return async (dispatch) => {
@@ -38,8 +38,10 @@ export const getUsers = () => {
         try {
             const response = await userService.get();
             dispatch({ type: GET_USERS_SUCCESS, payload: response.data });
+            return Promise.resolve()
         } catch (error) {
             dispatch({ type: GET_USERS_FAILURE, payload: error.message });
+            return Promise.reject()
         }
     };
 };

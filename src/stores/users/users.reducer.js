@@ -27,7 +27,9 @@ export const usersSlice = createSlice({
             gender: '',
             birthDay: '',
             image: ''
-        }
+        },
+        loading: false,
+        error: ''
     },
     reducers: {
         [CREATE_USER_REQUEST]: (state) => {

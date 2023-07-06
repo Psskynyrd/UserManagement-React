@@ -5,6 +5,12 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 import moment from 'moment/moment'
 import AddUser from './AddUser';
 import EditUser from './EditUser';
+import { connect } from 'react-redux';
+import { getUsers } from '../../stores/users/users.action';
+import { useDispatch } from 'react-redux';
+
+import * as userAction from '../../stores/users/users.action'
+import axios from 'axios';
 
 function stringToColor(string) {
     let hash = 0;
@@ -67,11 +73,13 @@ const data = [
     },
 ]
 
-const UserManagement = () => {
+const UserManagement = ({ users, loading, error}) => {
 
     const [dataRow, setDataRow] = useState([])
     const [isAddUser, setIsAddUser] = useState(false)
     const [isEditUser, setIsEditUser] = useState(false)
+
+    const dispatch = useDispatch();
 
     const toggleDrawer = (anchor, open) => (event) => {
         // if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -83,9 +91,22 @@ const UserManagement = () => {
 
 
     useEffect(() => {
+        // dispatch(getUsers())
+        //     .then(res => {
+        //         console.log(res);
+        //     })
+
+        axios.get('/api/users')
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+        
         setDataRow(data)
-        console.log('data', data);
-        console.log('dataRow', dataRow);
+        // console.log('data', data);
+        // console.log('dataRow', dataRow);
     }, [])
 
     return (
@@ -182,4 +203,18 @@ const UserManagement = () => {
     )
 }
 
+// Map Redux state to component props
+// const mapStateToProps = (state) => ({
+//     users: state.users.users,
+//     loading: state.users.loading,
+//     error: state.users.error,
+//   });
+  
+//   // Map action creators to component props
+//   const mapDispatchToProps = {
+//     getUsers,
+//   };
+  
+  // Connect component with Redux
+//   export default connect(mapStateToProps, mapDispatchToProps)(UserManagement);
 export default UserManagement

@@ -1,7 +1,8 @@
 import _axios from "axios";
 import { APIError } from "../libs/errors";
 
-export const baseURL = process.env.REACT_APP_API_URL
+// export const baseURL = process.env.REACT_APP_API_URL
+export const baseURL = "http://119.59.124.189:5000/api"
 const axios = _axios.create({
     withCredentials: true,
     baseURL
