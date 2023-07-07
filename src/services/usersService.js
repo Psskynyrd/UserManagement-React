@@ -10,10 +10,10 @@ export default {
     async getById(userId) {
         return await apiService.get(`users/${userId}`);
     },
-    async update({ firstName, lastName, gender, birthDate, image }) {
+    async update(userId, { firstName, lastName, gender, birthDate, image }) {
         return await apiService.put(`users/${userId}`, { firstName, lastName, gender, birthDate, image });
     },
-    async _delete() {
+    async _delete(userId) {
         return await apiService.delete(`users/${userId}`);
     },
 
